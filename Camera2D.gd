@@ -4,13 +4,29 @@ extends Camera2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-
-
+var S1 = Vector2(515,277)
+var S2 = Vector2(1750,277)
+var SNumber = 1
+var Scenes = [S1,S2]
+var Finished=true
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	self.position = Scenes[SNumber%2-1]
+func _physics_process(delta):
+	print(Finished)
+	if Finished == true:
+		if Input.is_action_just_pressed("Move Scene left"):
+			SNumber-=1
+			self.position = Scenes[SNumber%2-1]
+			Finished=false
+			if self.position == Scenes[SNumber%2-1]:
+				Finished=true
 
+		if Input.is_action_just_pressed("Move Scene Right"):
+			SNumber+=1
+			self.position = Scenes[SNumber%2-1]
+			Finished=false
+			if self.position == Scenes[SNumber%2-1]:
+				Finished=true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+				
