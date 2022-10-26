@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://RigidBody2D2.gd" type="Script" id=2]
 [ext_resource path="res://RigidBody2D.gd" type="Script" id=3]
 [ext_resource path="res://SeanGear10T.png" type="Texture" id=4]
 [ext_resource path="res://SeanGear20T.png" type="Texture" id=5]
+[ext_resource path="res://numbers.png" type="Texture" id=6]
+[ext_resource path="res://numpad.png" type="Texture" id=7]
+[ext_resource path="res://Keys.gd" type="Script" id=8]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -40,6 +43,57 @@ load_path = "res://.import/download.png-0fe1829d5b45fcf42c18266423ed01d8.stex"
 1/shapes = [  ]
 1/z_index = 0
 
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 6 )
+region = Rect2( 0, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 6 )
+region = Rect2( 8, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 6 )
+region = Rect2( 16, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 6 )
+region = Rect2( 24, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 6 )
+region = Rect2( 32, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 6 )
+region = Rect2( 40, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 6 )
+region = Rect2( 48, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 6 )
+region = Rect2( 56, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 6 )
+region = Rect2( 64, 0, 8, 8 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 6 )
+region = Rect2( 72, 0, 8, 8 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=14]
+extents = Vector2( 8.60001, 8.5 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -73,4 +127,170 @@ script = ExtResource( 2 )
 rotation = 0.326377
 texture = ExtResource( 4 )
 
+[node name="Keypad" type="RigidBody2D" parent="."]
+physics_interpolation_mode = 1
+position = Vector2( 1752, 270 )
+mode = 1
+gravity_scale = 0.0
+
+[node name="Sprite" type="Sprite" parent="Keypad"]
+position = Vector2( 2, 1 )
+texture = ExtResource( 7 )
+
+[node name="Keys" type="RigidBody2D" parent="Keypad"]
+physics_interpolation_mode = 1
+position = Vector2( -58, -422 )
+mode = 1
+gravity_scale = 0.0
+script = ExtResource( 8 )
+
+[node name="1" type="AnimatedSprite" parent="Keypad/Keys"]
+position = Vector2( -68, 244 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+centered = false
+
+[node name="1" type="Area2D" parent="Keypad/Keys/1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/1/1"]
+position = Vector2( 4.39999, 3.9 )
+shape = SubResource( 14 )
+
+[node name="2" type="AnimatedSprite" parent="Keypad/Keys"]
+position = Vector2( 39, 244 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+frame = 1
+centered = false
+
+[node name="2" type="Area2D" parent="Keypad/Keys/2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/2/2"]
+position = Vector2( 4.39999, 3.9 )
+shape = SubResource( 14 )
+
+[node name="3" type="AnimatedSprite" parent="Keypad/Keys"]
+position = Vector2( 145, 244 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+frame = 2
+centered = false
+
+[node name="3" type="Area2D" parent="Keypad/Keys/3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/3/3"]
+position = Vector2( 4.39999, 3.9 )
+shape = SubResource( 14 )
+
+[node name="4" type="AnimatedSprite" parent="Keypad/Keys"]
+position = Vector2( -68, 350 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+frame = 3
+centered = false
+
+[node name="4" type="Area2D" parent="Keypad/Keys/4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/4/4"]
+position = Vector2( 4.39999, 3.9 )
+shape = SubResource( 14 )
+
+[node name="5" type="AnimatedSprite" parent="Keypad/Keys"]
+position = Vector2( 38, 350 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+frame = 4
+centered = false
+
+[node name="5" type="Area2D" parent="Keypad/Keys/5"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/5/5"]
+position = Vector2( 4.39999, 3.9 )
+shape = SubResource( 14 )
+
+[node name="6" type="AnimatedSprite" parent="Keypad/Keys"]
+position = Vector2( 145, 350 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+frame = 5
+centered = false
+
+[node name="6" type="Area2D" parent="Keypad/Keys/6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/6/6"]
+position = Vector2( 4.39999, 3.9 )
+shape = SubResource( 14 )
+
+[node name="7" type="AnimatedSprite" parent="Keypad/Keys"]
+position = Vector2( -68, 457 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+frame = 6
+centered = false
+
+[node name="7" type="Area2D" parent="Keypad/Keys/7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/7/7"]
+position = Vector2( 4.39999, 3.9 )
+shape = SubResource( 14 )
+
+[node name="8" type="AnimatedSprite" parent="Keypad/Keys"]
+position = Vector2( 38, 457 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+frame = 7
+centered = false
+
+[node name="8" type="Area2D" parent="Keypad/Keys/8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/8/8"]
+position = Vector2( 4.39999, 3.9 )
+shape = SubResource( 14 )
+
+[node name="9" type="AnimatedSprite" parent="Keypad/Keys"]
+position = Vector2( 145, 457 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+frame = 8
+centered = false
+
+[node name="9" type="Area2D" parent="Keypad/Keys/9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/9/9"]
+position = Vector2( 4.39999, 3.9 )
+shape = SubResource( 14 )
+
+[node name="0" type="AnimatedSprite" parent="Keypad/Keys"]
+position = Vector2( 39, 562 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+frame = 9
+centered = false
+
+[node name="0" type="Area2D" parent="Keypad/Keys/0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/0/0"]
+position = Vector2( 4.39999, 3.9 )
+shape = SubResource( 14 )
+
 [connection signal="rotate_pressed" from="20TGear" to="10TGear" method="_on_20TGear_rotate_pressed"]
+[connection signal="mouse_entered" from="Keypad/Keys/1/1" to="Keypad/Keys" method="_on_1_mouse_entered"]
+[connection signal="mouse_exited" from="Keypad/Keys/1/1" to="Keypad/Keys" method="_on_1_mouse_exited"]
+[connection signal="mouse_entered" from="Keypad/Keys/2/2" to="Keypad/Keys" method="_on_2_mouse_entered"]
+[connection signal="mouse_exited" from="Keypad/Keys/2/2" to="Keypad/Keys" method="_on_2_mouse_exited"]
+[connection signal="mouse_entered" from="Keypad/Keys/3/3" to="Keypad/Keys" method="_on_3_mouse_entered"]
+[connection signal="mouse_exited" from="Keypad/Keys/3/3" to="Keypad/Keys" method="_on_3_mouse_exited"]
+[connection signal="mouse_entered" from="Keypad/Keys/4/4" to="Keypad/Keys" method="_on_4_mouse_entered"]
+[connection signal="mouse_exited" from="Keypad/Keys/4/4" to="Keypad/Keys" method="_on_4_mouse_exited"]
+[connection signal="mouse_entered" from="Keypad/Keys/5/5" to="Keypad/Keys" method="_on_5_mouse_entered"]
+[connection signal="mouse_exited" from="Keypad/Keys/5/5" to="Keypad/Keys" method="_on_5_mouse_exited"]
+[connection signal="mouse_entered" from="Keypad/Keys/6/6" to="Keypad/Keys" method="_on_6_mouse_entered"]
+[connection signal="mouse_exited" from="Keypad/Keys/6/6" to="Keypad/Keys" method="_on_6_mouse_exited"]
+[connection signal="mouse_entered" from="Keypad/Keys/7/7" to="Keypad/Keys" method="_on_7_mouse_entered"]
+[connection signal="mouse_exited" from="Keypad/Keys/7/7" to="Keypad/Keys" method="_on_7_mouse_exited"]
+[connection signal="mouse_entered" from="Keypad/Keys/8/8" to="Keypad/Keys" method="_on_8_mouse_entered"]
+[connection signal="mouse_exited" from="Keypad/Keys/8/8" to="Keypad/Keys" method="_on_8_mouse_exited"]
+[connection signal="mouse_entered" from="Keypad/Keys/9/9" to="Keypad/Keys" method="_on_9_mouse_entered"]
+[connection signal="mouse_exited" from="Keypad/Keys/9/9" to="Keypad/Keys" method="_on_9_mouse_exited"]
+[connection signal="mouse_entered" from="Keypad/Keys/0/0" to="Keypad/Keys" method="_on_0_mouse_entered"]
+[connection signal="mouse_exited" from="Keypad/Keys/0/0" to="Keypad/Keys" method="_on_0_mouse_exited"]

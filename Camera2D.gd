@@ -24,3 +24,55 @@ func _physics_process(delta):
 
 
 				
+
+
+func _on_4_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_5_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_6_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_7_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_8_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_9_mouse_entered():
+	pass # Replace with function body.
+
+
+func _on_2_mouse_exited():
+	pass # Replace with function body.
+
+
+func _on_3_mouse_exited():
+	pass # Replace with function body.
+
+
+func _on_4_mouse_exited():
+	pass # Replace with function body.
+
+
+func _on_5_mouse_exited():
+	pass # Replace with function body.
+
+
+func _on_6_mouse_exited():
+	pass # Replace with function body.
+
+
+func _on_7_mouse_exited():
+	pass # Replace with function body.
+
+
+func _on_8_mouse_exited():
+	pass # Replace with function body.
