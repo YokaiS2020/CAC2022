@@ -12,6 +12,7 @@ var Key9 = false
 var Key0 = false
 var InputtedNum = ""
 var TVal="1234"
+var cleared=false
 func _ready():
 	pass
 func _physics_process(delta):
@@ -49,6 +50,9 @@ func _physics_process(delta):
 	if Key0 == true && Input.is_action_just_pressed("Click"):
 		InputtedNum+="0"
 		print(InputtedNum)
+	if(InputtedNum=="2"):
+		cleared=true
+
 
 func _on_1_mouse_entered():
 	Key1=true
