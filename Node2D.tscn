@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://RigidBody2D2.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://numbers.png" type="Texture" id=6]
 [ext_resource path="res://numpad.png" type="Texture" id=7]
 [ext_resource path="res://Keys.gd" type="Script" id=8]
+[ext_resource path="res://theEngineerinPrinciples.png" type="Texture" id=9]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -275,6 +276,11 @@ centered = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Keypad/Keys/0/0"]
 position = Vector2( 4.39999, 3.9 )
 shape = SubResource( 14 )
+
+[node name="TheEngineerinPrinciples" type="Sprite" parent="."]
+position = Vector2( -734, 355 )
+scale = Vector2( 1.3075, 1.32 )
+texture = ExtResource( 9 )
 
 [connection signal="rotate_pressed" from="20TGear" to="10TGear" method="_on_20TGear_rotate_pressed"]
 [connection signal="mouse_entered" from="Keypad/Keys/1/1" to="Keypad/Keys" method="_on_1_mouse_entered"]
