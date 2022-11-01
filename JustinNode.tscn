@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Camera2D.gd" type="Script" id=1]
-[ext_resource path="res://lever_pivot.png" type="Texture" id=2]
-[ext_resource path="res://lever_arm.png" type="Texture" id=3]
-[ext_resource path="res://blackbox.jpeg" type="Texture" id=4]
-[ext_resource path="res://RigidBody2D.gd" type="Script" id=5]
+[ext_resource path="res://blackbox.jpeg" type="Texture" id=1]
+[ext_resource path="res://lever_arm.png" type="Texture" id=2]
+[ext_resource path="res://RigidBody2D.gd" type="Script" id=3]
+[ext_resource path="res://Camera2D.gd" type="Script" id=4]
+[ext_resource path="res://lever_pivot.png" type="Texture" id=5]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -50,7 +50,7 @@ position = Vector2( 1750, 277 )
 z_index = 1
 current = true
 smoothing_enabled = true
-script = ExtResource( 1 )
+script = ExtResource( 4 )
 
 [node name="TileMap" type="TileMap" parent="."]
 position = Vector2( 520, 316 )
@@ -66,11 +66,11 @@ node_b = NodePath("../RigidBody2D")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2( 1734, 289 )
-script = ExtResource( 5 )
+script = ExtResource( 3 )
 
 [node name="LeverArm" type="Sprite" parent="RigidBody2D"]
 position = Vector2( 0, 2 )
-texture = ExtResource( 3 )
+texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
 position = Vector2( -165, -6.99997 )
@@ -82,7 +82,7 @@ position = Vector2( 1561, 335 )
 scale = Vector2( 0.537939, 0.530278 )
 
 [node name="LeverPivot" type="Sprite" parent="StaticBody2D"]
-texture = ExtResource( 2 )
+texture = ExtResource( 5 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( -27.8843, -79.2037, 27.884, -79.2037, 27.884, -28.287, 14.8716, -28.287, 14.8716, -9.42908, 55.7683, 33.9444, 57.6272, 77.3179, -55.7683, 77.3179, -55.7683, 35.8302, -13.0127, -7.54327, -13.0127, -28.287, -27.8843, -28.287 )
@@ -97,4 +97,4 @@ shape = SubResource( 3 )
 [node name="Blackbox" type="Sprite" parent="StaticBody2D2/CollisionShape2D"]
 position = Vector2( -1.49999, -0.999996 )
 scale = Vector2( 3.26875, 0.684375 )
-texture = ExtResource( 4 )
+texture = ExtResource( 1 )
