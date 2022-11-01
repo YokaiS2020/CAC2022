@@ -282,7 +282,6 @@ position = Vector2( -734, 355 )
 scale = Vector2( 1.3075, 1.32 )
 texture = ExtResource( 9 )
 
-[connection signal="rotate_pressed" from="20TGear" to="10TGear" method="_on_20TGear_rotate_pressed"]
 [connection signal="mouse_entered" from="Keypad/Keys/1/1" to="Keypad/Keys" method="_on_1_mouse_entered"]
 [connection signal="mouse_exited" from="Keypad/Keys/1/1" to="Keypad/Keys" method="_on_1_mouse_exited"]
 [connection signal="mouse_entered" from="Keypad/Keys/2/2" to="Keypad/Keys" method="_on_2_mouse_entered"]
