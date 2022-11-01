@@ -11,15 +11,28 @@ var Key8 = false
 var Key9 = false
 var Key0 = false
 var InputtedNum = ""
-var TVal="1234"
-var cleared=false
+var TVal="0006"
+var PuzzlesNeeded = 1
 func _ready():
-	pass
+	$Color.hide()
+	$Color1.hide()
+	$EndScreen.hide()
 func _physics_process(delta):
 	if InputtedNum.length()==4:
 		if InputtedNum==TVal:
 			print("Correct Combination")
+			$Color.hide()
+			$Color1.show()
+			TVal="Completed"
+		else:
+			$Color1.hide()
+			$Color.show()
 		InputtedNum=""
+	if InputtedNum.length()==1:
+		$Color.hide()
+		$Color1.hide()
+	if TVal== "Completed":
+		$EndScreen.show()
 	if Key1 == true && Input.is_action_just_pressed("Click"):
 		InputtedNum+="1"
 		print(InputtedNum)
@@ -50,10 +63,12 @@ func _physics_process(delta):
 	if Key0 == true && Input.is_action_just_pressed("Click"):
 		InputtedNum+="0"
 		print(InputtedNum)
-	if(InputtedNum=="2"):
-		cleared=true
 
-
+func _on_Camera2D_CurrentSceneNumber(Scene):
+	
+	if Scene != 0:
+		InputtedNum = ""
+	
 func _on_1_mouse_entered():
 	Key1=true
 	
@@ -128,3 +143,6 @@ func _on_9_mouse_exited():
 
 func _on_0_mouse_exited():
 	Key0=false
+
+
+
