@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://lever_pivot.png" type="Texture" id=2]
 [ext_resource path="res://lever_arm.png" type="Texture" id=3]
 [ext_resource path="res://blackbox.jpeg" type="Texture" id=4]
-[ext_resource path="res://RigidBody2D.gd" type="Script" id=5]
+[ext_resource path="res://LeftTorqueDisplay.gd" type="Script" id=5]
+[ext_resource path="res://RightTorqueDisplay.gd" type="Script" id=6]
+[ext_resource path="res://ARIAL.TTF" type="DynamicFontData" id=7]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -40,6 +42,67 @@ load_path = "res://.import/download.png-0fe1829d5b45fcf42c18266423ed01d8.stex"
 1/shapes = [  ]
 1/z_index = 0
 
+[sub_resource type="GDScript" id=4]
+script/source = "extends StaticBody2D
+
+const stone_path = preload('res://Stone.tscn')
+
+var left_stone_array = []
+var right_stone_array = []
+
+func _ready():
+	pass
+
+func _process(delta):
+	if Input.is_action_just_pressed(\"Add_Left_Stone\"):
+		drop_left()
+	if Input.is_action_just_pressed(\"Add_Right_Stone\"):
+		drop_right()
+	if Input.is_action_just_pressed(\"Remove_Left_Stone\"):
+		remove_left()
+	if Input.is_action_just_pressed(\"Remove_Right_Stone\"):
+		remove_right()
+		
+
+func drop_left():
+	var stone_left = stone_path.instance()
+	get_parent().add_child(stone_left)
+	
+	stone_left.position = $Left_Stone_Spawner.global_position
+	left_stone_array.append(stone_left)
+
+func remove_left():
+	get_parent().remove_child(left_stone_array.back())
+	left_stone_array.remove(left_stone_array.size()-1)
+	#get_child(ston).remove_child()
+	
+func drop_right():
+	var stone_right = stone_path.instance()
+	get_parent().add_child(stone_right)
+	
+	stone_right.position = $Right_Stone_Spawner.global_position
+	right_stone_array.append(stone_right)
+	
+func remove_right():
+	get_parent().remove_child(right_stone_array.back())
+	right_stone_array.remove(right_stone_array.size()-1)
+
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+"
+
+[sub_resource type="DynamicFont" id=5]
+size = 38
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 38
+font_data = ExtResource( 7 )
+
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 522.5, 109.5 )
 
@@ -61,34 +124,58 @@ tile_data = PoolIntArray( -262152, 1, 0, -262151, 1, 0, -262150, 1, 0, -262149, 
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 position = Vector2( 1563, 296 )
-scale = Vector2( 1, 1 )
 node_a = NodePath("../StaticBody2D")
 node_b = NodePath("../RigidBody2D")
 
 [node name="RigidBody2D" type="RigidBody2D" parent="."]
 position = Vector2( 1734, 289 )
-scale = Vector2( 1, 1 )
-script = ExtResource( 5 )
+mass = 10.0
 
 [node name="LeverArm" type="Sprite" parent="RigidBody2D"]
 position = Vector2( 0, 2 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 3 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
 position = Vector2( -165, -6.99997 )
 scale = Vector2( 1.00297, 1.06014 )
-polygon = PoolVector2Array( -160, -18.9999, 492, -17.9999, 492, 31.0001, 395, 32.0001, 394, 9.00012, -61.9999, 6.00012, -61.9999, 34.0001, -161, 34.0001 )
+polygon = PoolVector2Array( -161.52, -17.9222, 492, -17.9999, 492, 31.0001, 395, 32.0001, 394, 9.00012, -61.9999, 6.00012, -61.9999, 34.0001, -161, 34.0001 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 1561, 335 )
 scale = Vector2( 0.537939, 0.530278 )
+script = SubResource( 4 )
 
 [node name="LeverPivot" type="Sprite" parent="StaticBody2D"]
 texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PoolVector2Array( -27.8843, -79.2037, 27.884, -79.2037, 27.884, -28.287, 14.8716, -28.287, 14.8716, -9.42908, 55.7683, 33.9444, 57.6272, 77.3179, -55.7683, 77.3179, -55.7683, 35.8302, -13.0127, -7.54327, -13.0127, -28.287, -27.8843, -28.287 )
+
+[node name="LeftTorqueDisplay" type="RichTextLabel" parent="StaticBody2D"]
+margin_left = -573.0
+margin_top = -426.0
+margin_right = -301.0
+margin_bottom = -168.0
+custom_fonts/normal_font = SubResource( 5 )
+script = ExtResource( 5 )
+
+[node name="RightTorqueDisplay" type="RichTextLabel" parent="StaticBody2D"]
+margin_left = 939.0
+margin_top = -460.0
+margin_right = 1283.0
+margin_bottom = -175.0
+custom_fonts/normal_font = SubResource( 6 )
+script = ExtResource( 6 )
+
+[node name="Left_Stone_Spawner" type="Position2D" parent="StaticBody2D"]
+position = Vector2( -246.278, -700 )
+
+[node name="Right_Stone_Spawner" type="Position2D" parent="StaticBody2D"]
+position = Vector2( 891.332, -700 )
+scale = Vector2( 1, 1 )
+
+[node name="Position2D" type="Position2D" parent="StaticBody2D"]
+position = Vector2( 931.332, -135.778 )
 
 [node name="StaticBody2D2" type="StaticBody2D" parent="."]
 position = Vector2( 1777, 388 )
