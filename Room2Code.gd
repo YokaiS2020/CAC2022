@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends RichTextLabel
 
 
 # Declare member variables here. Examples:
@@ -7,17 +7,13 @@ extends RigidBody2D
 
 
 # Called when the node enters the scene tree for the first time.
-
+func _ready():
+	#self.hide()
+	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_pressed("Rotate") :
-			self.rotation_degrees-=2
-			#emit_signal("rotate_pressed")
 	
+	self.hide()
 #	pass
-
-
-#func _on_20TGear_rotate_pressed():
-	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://Camera2D.gd" type="Script" id=1]
 [ext_resource path="res://RigidBody2D2.gd" type="Script" id=2]
@@ -15,6 +15,17 @@
 [ext_resource path="res://GearBackground.png" type="Texture" id=13]
 [ext_resource path="res://KeypadBackground.png" type="Texture" id=14]
 [ext_resource path="res://EndScreen.png" type="Texture" id=15]
+[ext_resource path="res://blackbox.jpeg" type="Texture" id=16]
+[ext_resource path="res://lever_arm.png" type="Texture" id=17]
+[ext_resource path="res://lever_pivot.png" type="Texture" id=18]
+[ext_resource path="res://StaticBody2D2.gd" type="Script" id=19]
+[ext_resource path="res://ARIAL.TTF" type="DynamicFontData" id=20]
+[ext_resource path="res://RightTorqueDisplay.gd" type="Script" id=21]
+[ext_resource path="res://LeftTorqueDisplay.gd" type="Script" id=22]
+[ext_resource path="res://LeverArm.gd" type="Script" id=23]
+[ext_resource path="res://Room2code.png" type="Texture" id=24]
+[ext_resource path="res://Instructions.png" type="Texture" id=25]
+[ext_resource path="res://Instruct.gd" type="Script" id=26]
 
 [sub_resource type="StreamTexture" id=1]
 flags = 4
@@ -115,6 +126,17 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 8.60001, 8.5 )
 
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 160.306, 85.8689 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 38
+font_data = ExtResource( 20 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 38
+font_data = ExtResource( 20 )
+
 [node name="Node2D" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -129,7 +151,7 @@ position = Vector2( 513, 316 )
 scale = Vector2( 1.02169, 1.09893 )
 tile_set = SubResource( 2 )
 format = 1
-tile_data = PoolIntArray( -65516, 2, 0 )
+tile_data = PoolIntArray( -327650, 1, 0, -327649, 1, 0, -327648, 1, 0, -327647, 1, 0, -327646, 1, 0, -327645, 1, 0, -327644, 1, 0, -327643, 1, 0, -327642, 1, 0, -327641, 1, 0, -327640, 1, 0, -327639, 1, 0, -327638, 1, 0, -327637, 1, 0, -327636, 1, 0, -327635, 1, 0, -262114, 1, 0, -262113, 1, 0, -262102, 2, 0, -262101, 1, 0, -262100, 1, 0, -262099, 1, 0, -196578, 1, 0, -196577, 1, 0, -196575, 1, 0, -196574, 1, 0, -196573, 1, 0, -196570, 1, 0, -196569, 1, 0, -196568, 1, 0, -196566, 2, 0, -196565, 1, 0, -196564, 1, 0, -196563, 1, 0, -131042, 1, 0, -131041, 1, 0, -131039, 1, 0, -131038, 1, 0, -131037, 1, 0, -131034, 1, 0, -131033, 1, 0, -131032, 1, 0, -131030, 2, 0, -131029, 1, 0, -131028, 1, 0, -131027, 1, 0, -65516, 2, 0, -65506, 1, 0, -65505, 1, 0, -65503, 1, 0, -65502, 1, 0, -65501, 1, 0, -65498, 1, 0, -65497, 1, 0, -65496, 1, 0, -65494, 2, 0, -65493, 1, 0, -65492, 1, 0, -65491, 1, 0, 30, 1, 0, 31, 1, 0, 33, 1, 0, 34, 1, 0, 35, 1, 0, 38, 1, 0, 39, 1, 0, 40, 1, 0, 42, 2, 0, 43, 1, 0, 44, 1, 0, 45, 1, 0, 65566, 1, 0, 65567, 1, 0, 65568, 1, 0, 65569, 1, 0, 65570, 1, 0, 65571, 1, 0, 65572, 1, 0, 65573, 1, 0, 65574, 1, 0, 65575, 1, 0, 65576, 1, 0, 65577, 1, 0, 65578, 1, 0, 65579, 1, 0, 65580, 1, 0, 65581, 1, 0, 131102, 1, 0, 131103, 1, 0, 131104, 1, 0, 131105, 1, 0, 131106, 1, 0, 131107, 1, 0, 131108, 1, 0, 131109, 1, 0, 131110, 1, 0, 131111, 1, 0, 131112, 1, 0, 131113, 1, 0, 131114, 1, 0, 131115, 1, 0, 131116, 1, 0, 131117, 1, 0, 196638, 1, 0, 196639, 1, 0, 196640, 1, 0, 196641, 1, 0, 196642, 1, 0, 196643, 1, 0, 196644, 1, 0, 196645, 1, 0, 196646, 1, 0, 196647, 1, 0, 196648, 1, 0, 196649, 1, 0, 196650, 1, 0, 196651, 1, 0, 196652, 1, 0, 196653, 1, 0 )
 
 [node name="20TGear" type="RigidBody2D" parent="."]
 position = Vector2( 410, 408 )
@@ -348,9 +370,103 @@ position = Vector2( 1671.21, 788.866 )
 scale = Vector2( 15.5452, -49.6241 )
 texture = ExtResource( 14 )
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 2998.5, 467.5 )
+scale = Vector2( 3.26563, 0.809375 )
+
+[node name="Blackbox" type="Sprite" parent="StaticBody2D"]
+position = Vector2( 0, 72.278 )
+scale = Vector2( 1, 0.548263 )
+texture = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 0, 70.4249 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 15 )
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2( 2768, 330 )
+scale = Vector2( 0.5, 0.5 )
+node_a = NodePath("../RigidBody2D")
+node_b = NodePath("../StaticBody2D2")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2( 2765.33, 341.333 )
+scale = Vector2( 0.5, 0.5 )
+script = ExtResource( 19 )
+
+[node name="LeverPivot" type="Sprite" parent="StaticBody2D2"]
+position = Vector2( 5.33301, 163.333 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 18 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+position = Vector2( 651.34, -16.666 )
+polygon = PoolVector2Array( -668, 124, -624, 124, -624, 162, -634, 162, -634, 176, -602, 208, -602, 240, -688, 240, -688, 206, -656, 176, -656, 162, -668, 162 )
+
+[node name="Right_Stone_Spawner" type="Position2D" parent="StaticBody2D2"]
+position = Vector2( 963.34, -750 )
+
+[node name="Left_Stone_Spawner" type="Position2D" parent="StaticBody2D2"]
+position = Vector2( -264.66, -750 )
+
+[node name="RightTorqueDisplay" type="RichTextLabel" parent="StaticBody2D2"]
+margin_left = 1005.0
+margin_top = -387.0
+margin_right = 1485.0
+margin_bottom = -151.0
+custom_fonts/normal_font = SubResource( 16 )
+script = ExtResource( 21 )
+
+[node name="LeftTorqueDisplay" type="RichTextLabel" parent="StaticBody2D2"]
+margin_left = -559.0
+margin_top = -389.0
+margin_right = -287.0
+margin_bottom = -121.0
+custom_fonts/normal_font = SubResource( 17 )
+script = ExtResource( 22 )
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+position = Vector2( 2942, 326 )
+mass = 10.0
+script = ExtResource( 23 )
+
+[node name="LeverArm" type="Sprite" parent="RigidBody2D"]
+position = Vector2( -2, 65 )
+texture = ExtResource( 17 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RigidBody2D"]
+position = Vector2( -173, 69 )
+polygon = PoolVector2Array( -156, -31, 498, -31, 498, 24, 400, 25, 400, -2, -58, -2, -57, 23, -156, 24 )
+
+[node name="Position2D" type="Position2D" parent="RigidBody2D"]
+position = Vector2( 325, -27 )
+
+[node name="Position2D2" type="Position2D" parent="RigidBody2D"]
+position = Vector2( -329, -27 )
+
+[node name="Position2D3" type="Position2D" parent="RigidBody2D"]
+position = Vector2( -174, 0 )
+
+[node name="SecretCode" type="Area2D" parent="RigidBody2D"]
+physics_interpolation_mode = 1
+
+[node name="Room2Code" type="Sprite" parent="RigidBody2D/SecretCode"]
+physics_interpolation_mode = 1
+position = Vector2( 30, -223 )
+scale = Vector2( 0.300741, 0.307754 )
+texture = ExtResource( 24 )
+
+[node name="Instruct" type="Area2D" parent="."]
+script = ExtResource( 26 )
+
+[node name="Instructions" type="Sprite" parent="Instruct"]
+position = Vector2( 2970, 98.0001 )
+scale = Vector2( 0.309074, 0.307401 )
+texture = ExtResource( 25 )
+
 [connection signal="CurrentSceneNumber" from="Camera2D" to="20TGear" method="_on_Camera2D_CurrentSceneNumber"]
 [connection signal="CurrentSceneNumber" from="Camera2D" to="Keypad/Keys" method="_on_Camera2D_CurrentSceneNumber"]
-[connection signal="rotate_pressed" from="20TGear" to="10TGear" method="_on_20TGear_rotate_pressed"]
 [connection signal="mouse_entered" from="Keypad/Keys/1/1" to="Keypad/Keys" method="_on_1_mouse_entered"]
 [connection signal="mouse_exited" from="Keypad/Keys/1/1" to="Keypad/Keys" method="_on_1_mouse_exited"]
 [connection signal="mouse_entered" from="Keypad/Keys/2/2" to="Keypad/Keys" method="_on_2_mouse_entered"]
